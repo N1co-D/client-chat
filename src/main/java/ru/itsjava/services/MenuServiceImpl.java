@@ -1,7 +1,6 @@
 package ru.itsjava.services;
 
 import lombok.SneakyThrows;
-
 import java.util.Scanner;
 
 public class MenuServiceImpl implements MenuService {
