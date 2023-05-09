@@ -29,7 +29,7 @@ public class ClientServiceImpl implements ClientService {
             //!autho!login:password
             serverWriter.println("!autho!" + login + ":" + password);
             serverWriter.flush();
-            System.out.println("Авторизация завершена! Приятного общения!");
+            System.out.println("Процесс авторизации завершен! При возникновении ошибок, повторите снова!");
 
             while (true) {
                 String consoleMessage = messageInputService.getMessage();
