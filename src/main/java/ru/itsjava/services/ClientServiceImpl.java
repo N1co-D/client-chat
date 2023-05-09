@@ -11,7 +11,7 @@ public class ClientServiceImpl implements ClientService {
 
     @SneakyThrows
     @Override
-    public void start() {
+    public void start(int menuCommand) {
         Socket socket = new Socket(HOST, PORT);
 
         if (socket.isConnected()) {
@@ -20,16 +20,31 @@ public class ClientServiceImpl implements ClientService {
             PrintWriter serverWriter = new PrintWriter(socket.getOutputStream());
             MessageInputService messageInputService = new MessageInputServiceImpl(System.in);
 
-            System.out.println("Введите свой логин:");
-            String login = messageInputService.getMessage();
+            if (menuCommand == 1) {
+                System.out.println("Введите свой логин:");
+                String login = messageInputService.getMessage();
 
-            System.out.println("Введите свой пароль:");
-            String password = messageInputService.getMessage();
+                System.out.println("Введите свой пароль:");
+                String password = messageInputService.getMessage();
 
-            //!autho!login:password
-            serverWriter.println("!autho!" + login + ":" + password);
-            serverWriter.flush();
-            System.out.println("Процесс авторизации завершен! При возникновении ошибок, повторите снова!");
+                //!autho!login:password
+                serverWriter.println("!autho!" + login + ":" + password);
+                serverWriter.flush();
+                System.out.println("Процесс авторизации завершен. Возникновение ошибки с отправкой сообщений означает отсутствие авторизации, пройдите регистрацию!  ");
+            } else if (menuCommand == 2){
+                System.out.println("Введите новый логин:");
+                String login = messageInputService.getMessage();
+
+                System.out.println("Введите новый пароль:");
+                String password = messageInputService.getMessage();
+
+                //!regist!login:password
+                serverWriter.println("!regist!" + login + ":" + password);
+                serverWriter.flush();
+                System.out.println("Процесс регистрации завершен!");
+            } else {
+                System.exit(0);
+            }
 
             while (true) {
                 String consoleMessage = messageInputService.getMessage();
