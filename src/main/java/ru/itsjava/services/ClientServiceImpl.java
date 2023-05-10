@@ -41,7 +41,7 @@ public class ClientServiceImpl implements ClientService {
                 //!reg!login:password
                 serverWriter.println("!reg!" + login + ":" + password);
                 serverWriter.flush();
-                System.out.println("Процесс регистрации завершен!");
+                System.out.println("Процесс регистрации завершен! При ошибке используйте другой логин.");
             } else {
                 System.exit(0);
             }
