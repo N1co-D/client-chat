@@ -30,7 +30,7 @@ public class ClientServiceImpl implements ClientService {
                 //!autho!login:password
                 serverWriter.println("!autho!" + login + ":" + password);
                 serverWriter.flush();
-                System.out.println("Процесс авторизации завершен. Возникновение ошибки с отправкой сообщений означает отсутствие авторизации, пройдите регистрацию!  ");
+                System.out.println("Процесс авторизации завершен!");
             } else if (menuCommand == 2){
                 System.out.println("Введите новый логин:");
                 String login = messageInputService.getMessage();
@@ -38,8 +38,8 @@ public class ClientServiceImpl implements ClientService {
                 System.out.println("Введите новый пароль:");
                 String password = messageInputService.getMessage();
 
-                //!regist!login:password
-                serverWriter.println("!regist!" + login + ":" + password);
+                //!reg!login:password
+                serverWriter.println("!reg!" + login + ":" + password);
                 serverWriter.flush();
                 System.out.println("Процесс регистрации завершен!");
             } else {
