@@ -14,10 +14,10 @@ public class MenuServiceImpl implements MenuService {
             int menuNum = scanner.nextInt();
 
             if (menuNum == 1) {
-                ClientService clientService = new ClientServiceImpl();
+                ClientService clientService = new ClientServiceImpl("localhost",8081);
                 clientService.start(1);
             } else if (menuNum == 2) {
-                ClientService clientService = new ClientServiceImpl();
+                ClientService clientService = new ClientServiceImpl("localhost",8081);
                 clientService.start(2);
             } else {
                 System.out.println("До свидания!");
